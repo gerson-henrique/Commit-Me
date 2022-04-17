@@ -45,10 +45,12 @@ exports.deactivate = exports.activate = void 0;
 const vscode = __webpack_require__(1);
 function activate(context) {
     console.log('Congratulations, your extension "commitme" is now active!');
-    let disposable = vscode.commands.registerCommand('commitme.helloWorld', () => {
-        vscode.window.showInformationMessage('Hello  from CommitMe!');
-    });
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(vscode.commands.registerCommand('commitme.helloWorld', () => {
+        vscode.window.showInformationMessage('Hello from CommitMe!');
+    }));
+    context.subscriptions.push(vscode.commands.registerCommand("commitme.commitMsg", () => {
+        vscode.window.showInformationMessage("Commit Message ?", "no");
+    }));
 }
 exports.activate = activate;
 function deactivate() { }

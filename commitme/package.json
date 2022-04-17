@@ -18,7 +18,12 @@
 			{
 				"command": "commitme.helloWorld",
 				"title": "Hello World"
-			}
+			},
+      {
+        "command": "commitme.commitMsg",
+				"title": "Hello World"
+      }
+
 		]
 	},
 	"scripts": {
