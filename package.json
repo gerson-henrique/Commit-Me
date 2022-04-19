@@ -10,7 +10,8 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:commitme.helloWorld"
+        "onCommand:commitme.helloWorld",
+        "onCommand:commitme.commitMsg"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -21,7 +22,8 @@
 			},
       {
         "command": "commitme.commitMsg",
-				"title": "Hello World"
+        "category": "CommitMe",
+				"title": "Text"
       }
 
 		]

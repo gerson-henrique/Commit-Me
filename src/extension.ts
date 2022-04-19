@@ -13,7 +13,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 context.subscriptions.push(
    vscode.commands.registerCommand("commitme.commitMsg",() => {
-    vscode.window.showInformationMessage("Commit Message ?","no");
+    vscode.window.showInputBox({
+      placeHolder: '<type>[optional scope]: <description>',
+      title: 'Commit Message'});
   }));
 }
 export function deactivate() {}

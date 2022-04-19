@@ -49,7 +49,10 @@ function activate(context) {
         vscode.window.showInformationMessage('Hello from CommitMe!');
     }));
     context.subscriptions.push(vscode.commands.registerCommand("commitme.commitMsg", () => {
-        vscode.window.showInformationMessage("Commit Message ?", "no");
+        vscode.window.showInputBox({
+            placeHolder: '<type>[optional scope]: <description>',
+            title: 'Commit Message'
+        });
     }));
 }
 exports.activate = activate;
