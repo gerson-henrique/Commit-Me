@@ -1,7 +1,10 @@
 import * as vscode from 'vscode';
+import today from './implementations/commitEditionFunctions';
 
 
 export function activate(context: vscode.ExtensionContext) {
+
+
 	
 
 	console.log('Congratulations, your extension "commitme" is now active!');
@@ -12,10 +15,18 @@ export function activate(context: vscode.ExtensionContext) {
 );
 
 context.subscriptions.push(
-   vscode.commands.registerCommand("commitme.commitMsg",() => {
-    vscode.window.showInputBox({
-      placeHolder: '<type>[optional scope]: <description>',
-      title: 'Commit Message'});
+   vscode.commands.registerCommand("commitme.commitMsg", async () => {
+     const time = today();
+     const message = await vscode.window.showInputBox({
+       placeHolder: `${time}`,
+       title: 'Commit Message',
+       prompt: 'For more info see Conventional Commits'});
+
+      //use message as a commit
+
+      // todo = reserch if placeholder can be passed as a value
+      if( typeof message === 'undefined' ) {vscode.window.showInformationMessage(`${time} Send Sucessefuly`);}
+      else {vscode.window.showInformationMessage(`${message} Send Sucessefuly`);};
   }));
 }
 export function deactivate() {}

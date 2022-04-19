@@ -7,6 +7,19 @@
 
 module.exports = require("vscode");
 
+/***/ }),
+/* 2 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const today = () => {
+    var today = new Date();
+    return (today);
+};
+exports["default"] = today;
+
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -43,16 +56,28 @@ var exports = __webpack_exports__;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.deactivate = exports.activate = void 0;
 const vscode = __webpack_require__(1);
+const commitEditionFunctions_1 = __webpack_require__(2);
 function activate(context) {
     console.log('Congratulations, your extension "commitme" is now active!');
     context.subscriptions.push(vscode.commands.registerCommand('commitme.helloWorld', () => {
         vscode.window.showInformationMessage('Hello from CommitMe!');
     }));
-    context.subscriptions.push(vscode.commands.registerCommand("commitme.commitMsg", () => {
-        vscode.window.showInputBox({
-            placeHolder: '<type>[optional scope]: <description>',
-            title: 'Commit Message'
+    context.subscriptions.push(vscode.commands.registerCommand("commitme.commitMsg", async () => {
+        const time = (0, commitEditionFunctions_1.default)();
+        const message = await vscode.window.showInputBox({
+            placeHolder: `${time}`,
+            title: 'Commit Message',
+            prompt: 'For more info see Conventional Commits'
         });
+        //use message as a commit
+        // todo = reserch if placeholder can be passed as a value
+        if (typeof message === 'undefined') {
+            vscode.window.showInformationMessage(`${time} Send Sucessefuly`);
+        }
+        else {
+            vscode.window.showInformationMessage(`${message} Send Sucessefuly`);
+        }
+        ;
     }));
 }
 exports.activate = activate;
