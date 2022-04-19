@@ -71,7 +71,7 @@ function activate(context) {
         });
         //use message as a commit
         // todo = reserch if placeholder can be passed as a value
-        if (typeof message === 'undefined') {
+        if (message === '') {
             vscode.window.showInformationMessage(`${time} Send Sucessefuly`);
         }
         else {

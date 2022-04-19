@@ -25,7 +25,7 @@ context.subscriptions.push(
       //use message as a commit
 
       // todo = reserch if placeholder can be passed as a value
-      if( typeof message === 'undefined' ) {vscode.window.showInformationMessage(`${time} Send Sucessefuly`);}
+      if(  message === '' ) {vscode.window.showInformationMessage(`${time} Send Sucessefuly`);}
       else {vscode.window.showInformationMessage(`${message} Send Sucessefuly`);};
   }));
 }
